@@ -19,6 +19,7 @@ r_class       = ro.r["class"]               # Map the class function
 r_list        = ro.r["list"]                # Map the list function
 r_data        = ro.r["data"]                # Map the data function
 r_dim         = ro.r["dim"]                 # Map the dim function
+r_rownames    = ro.r["rownames"]            # Map the rownames function
 
 r_png         = ro.r["png"]                 # Map the dim function
 r_off         = ro.r["dev.off"]                 # Map the dim function
@@ -38,10 +39,15 @@ r_plot(results1)
 
 ## Test2 - Use a dataset from the HDD
 data2 = read_cross(file = "data/multi.data.csv", format = "csvr", genotypes = r_c("AA","BB"))
-results2 = scanone(data2)
+results2 = scanone(data2, pheno.col="the_pheno", addcovar=)
+resultsInPython = np.array(results2)
+
+
 r_png("test.png")
 r_plot(results2)
 r_off()
+
+
 
 ## Test3 - Construct a python cross object and send it to R
 pydata      = DataFrame.from_csv("data/multi.data.csv", -1)

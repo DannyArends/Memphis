@@ -1,0 +1,41 @@
+git clone git@github.com:DannyArends/genenetwork2.git GeneNetwork
+
+sudo pip install Flask
+
+sudo pip install pyyaml
+
+wget http://redis.googlecode.com/files/redis-2.6.14.tar.gz
+tar xzf redis-2.6.14.tar.gz
+cd redis-2.6.14
+make -j4
+
+sudo pip install redis
+sudo pip install sqlalchemy
+
+wget http://downloads.sourceforge.net/project/qtlreaper/qtlreaper/1.1.1/qtlreaper-1.1.1.tar.gz?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fqtlreaper%2Ffiles%2Flatest%2Fdownload&ts=1358975786&use_mirror=iweb
+tar xvf qtlreaper-1.1.1.tar.gz
+python setup.py install
+
+wget http://downloads.sourceforge.net/project/numpy/Old%20Numarray/1.5.2/numarray-1.5.2.tar.gz?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fnumpy%2Ffiles%2FOld%2520Numarray%2F1.5.2%2Fnumarray-1.5.2.tar.gz%2Fdownload&ts=1358978306&use_mirror=superb-dca2
+mv -v numarray-1.5.2.tar.gz?r=http:%2F%2Fsourceforge.net%2Fprojects%2Fnumpy%2Ffiles%2FOld%20Numarray%2F1.5.2%2Fnumarray-1.5.2.tar.gz%2Fdownload numarray-1.5.2.tar.gz
+tar xvf numarray-1.5.2.tar.gz
+sudo python setup.py install
+
+wget http://www.parallelpython.com/downloads/pp/pp-1.6.3.tar.gz
+tar xvf pp-1.6.3.tar.gz
+python setup.py install
+
+sudo pip install Flask-SQLAlchemy
+
+## In Log into mysql
+
+CREATE USER 'GN'@'localhost' IDENTIFIED BY 'mypass';
+CREATE DATABASE db_webqtl;
+GRANT ALL PRIVILEGES ON db_webqtl.* TO 'GN'@'localhost' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+sudo pip install werkzeug==0.8.3
+
+export WQFLASK_SETTINGS=~/danny_settings.py
+source ~/ve27/bin/activate
+
