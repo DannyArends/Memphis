@@ -42,17 +42,19 @@ r_c             = ro.r["c"]                   # Map the c function
 r_seq           = ro.r["seq"]                 # Map the seq function
 r_table         = ro.r["table"]               # Map the table function
 r_names         = ro.r["names"]               # Map the names function
+r_png           = ro.r["png"]                 # Map the png function for plotting
+r_dev_off       = ro.r["dev.off"]             # Map the dev.off function
 
 
 print(r_library("WGCNA"))                     # Load WGCNA
 print(r_options(stringsAsFactors = False))
 
 ## Get pointers to some WGCNA functions
-r_enableWGCNAThreads  = ro.r["enableWGCNAThreads"]              # Map the enableWGCNAThreads function
-r_pickSoftThreshold   = ro.r["pickSoftThreshold"]               # Map the pickSoftThreshold function
-r_blockwiseModules    = ro.r["blockwiseModules"]                # Map the blockwiseModules function
-r_labels2colors       = ro.r["labels2colors"]                   # Map the labels2colors function
-r_plotDendroAndColors       = ro.r["plotDendroAndColors"]       # Map the plotDendroAndColors function
+r_enableWGCNAThreads    = ro.r["enableWGCNAThreads"]        # Map the enableWGCNAThreads function
+r_pickSoftThreshold     = ro.r["pickSoftThreshold"]         # Map the pickSoftThreshold function
+r_blockwiseModules      = ro.r["blockwiseModules"]          # Map the blockwiseModules function
+r_labels2colors         = ro.r["labels2colors"]             # Map the labels2colors function
+r_plotDendroAndColors   = ro.r["plotDendroAndColors"]       # Map the plotDendroAndColors function
 
 
 ## Main code
@@ -74,4 +76,6 @@ print(r_table(net[1]))
 
 # The iconic WCGNA plot of the modules in the hanging tree
 mergedColors = r_labels2colors(net[1])
+r_png("test.png")
 r_plotDendroAndColors(net[5][0],mergedColors, "Module colors",dendroLabels = False, hang = 0.03, addGuide = True, guideHang = 0.05)
+r_dev_off()
