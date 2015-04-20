@@ -1,0 +1,7 @@
+# Import package dependencies
+import(stats)
+
+# Export all names
+export(rot.kdfe)
+export(dpi.kdfe)
+
